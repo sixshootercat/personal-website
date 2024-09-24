@@ -4,68 +4,160 @@ interface Props {
 }
 
 const navigationItems = [
-  { name: 'Home', url: '/' },
-  { name: 'Blog', url: '/blog/' },
+  { name: "Home", url: "/" },
+  { name: "Blog", url: "/blog/" },
 ];
 
 const socialIcons = [
   {
-    name: 'GitHub',
-    url: 'https://github.com/eliancodes/brutal',
-    icon: 'i-uil-github',
+    name: "GitHub",
+    url: "https://github.com/sixshootercat",
+    icon: "i-uil-github",
   },
   {
-    name: 'Twitter',
-    url: 'https://www.twitter.com/eliancodes',
-    icon: 'i-uil-twitter',
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/kevin-ruhl-b19b80166/",
+    icon: "i-uil-linkedin",
   },
-  { name: 'RSS', url: '/feed.xml', icon: 'i-uil-rss' },
+  {
+    name: "Medium",
+    url: "https://medium.com/@kevin.ruhl92",
+    icon: "i-uil-medium-m",
+  },
 ];
 
 const { pageTitle } = Astro.props;
 ---
 
-<header class='border-b-4 border-black flex justify-between p-6 items-center'>
-  {pageTitle && <h1 class='hidden'>{pageTitle}</h1>}
-  <a href='/' title='Back to Home'>
-    <p class='righteous md:text-5xl'>Brutal</p>
-  </a>
-  <nav class='hidden md:inline-block'>
-    <h2 class='hidden'>Navigation</h2>
-    <ul class='flex gap-8 poppins'>
-      {
-        navigationItems.map((item) => (
-          <li>
-            <a
-              class='text-lg font-medium hover:text-green hover:underline transition-all duration-150 ease-in-out'
-              href={item.url}
-              title={`Go to ${item.name}`}
-            >
-              {item.name}
-            </a>
-          </li>
-        ))
-      }
-      {
-        socialIcons.map((item) => (
-          <li>
-            <a
-              href={item.url}
-              class='hover:text-green hover:underline transition-all duration-150 ease-in-out'
-              target='_blank'
-              title={`'See @ElianCodes on ${item.name}`}
-            >
-              <div class:list={[item.icon, 'w-6 h-6']} />
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </nav>
-  <nav class='md:hidden flex'>
-    <h2 class='hidden'>Mobile Navigation</h2>
-    <ul>
-      <li><a href='/blog/'>Blog</a></li>
-    </ul>
-  </nav>
+<header class="border-b-4 border-black">
+  <div
+    class="flex justify-between p-6 items-center lg:max-w[1440px] lg:mx-auto"
+  >
+    {pageTitle && <h1 class="hidden">{pageTitle}</h1>}
+    <a href="/" title="Back to Home">
+      <p class="righteous md:text-5xl">Kevin Ruhl</p>
+    </a>
+    <nav class="hidden md:inline-block">
+      <h2 class="hidden">Desktop Navigation</h2>
+      <ul class="flex gap-8 poppins">
+        {
+          navigationItems.map((item) => (
+            <li>
+              <a
+                class="text-lg font-medium hover:text-blue hover:underline transition-all duration-150 ease-in-out"
+                href={item.url}
+                title={`Go to ${item.name}`}
+              >
+                {item.name}
+              </a>
+            </li>
+          ))
+        }
+        {
+          socialIcons.map((item) => (
+            <li>
+              <a
+                href={item.url}
+                class="hover:text-blue hover:underline transition-all duration-150 ease-in-out"
+                target="_blank"
+              >
+                <div class:list={[item.icon, "w-6 h-6"]} />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <nav class="md:hidden flex">
+      <h2 class="hidden">Mobile Navigation</h2>
+      <button role="button" id="openMenuButton" aria-label="Open mobile menu">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+        </svg>
+      </button>
+      <div id="mobileMenu" class="hidden">
+        <ul class="flex gap-3">
+          {
+            navigationItems.map((item) => (
+              <li>
+                <a
+                  class="text-lg font-medium hover:text-blue hover:underline transition-all duration-150 ease-in-out"
+                  href={item.url}
+                  title={`Go to ${item.name}`}
+                >
+                  {item.name}
+                </a>
+              </li>
+            ))
+          }
+          {
+            socialIcons.map((item) => (
+              <li>
+                <a
+                  href={item.url}
+                  class="hover:text-blue hover:underline transition-all duration-150 ease-in-out"
+                  target="_blank"
+                >
+                  <div class:list={[item.icon, "w-6 h-6"]} />
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <button
+        role="button"
+        id="closeMenuButton"
+        class="hidden"
+        aria-label="Close mobile menu"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6 ml-2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </nav>
+  </div>
+  <script is:inline>
+    document.addEventListener("astro:page-load", () => {
+      // open menu
+      document
+        .getElementById("openMenuButton")
+        ?.addEventListener("click", () => {
+          document.getElementById("mobileMenu")?.classList.remove("hidden");
+          document.getElementById("openMenuButton")?.classList.add("hidden");
+          document
+            .getElementById("closeMenuButton")
+            ?.classList.remove("hidden");
+        });
+
+      // close menu
+      document
+        .getElementById("closeMenuButton")
+        ?.addEventListener("click", () => {
+          document.getElementById("mobileMenu")?.classList.add("hidden");
+          document.getElementById("openMenuButton")?.classList.remove("hidden");
+          document.getElementById("closeMenuButton")?.classList.add("hidden");
+        });
+    });
+  </script>
 </header>
