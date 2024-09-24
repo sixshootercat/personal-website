@@ -79,13 +79,17 @@ const tools = [
               tools.map((item) => (
                 <li>
                   <Pill color="#60a5fa">
-                    <a
-                      href={item.url}
-                      target="_blank"
-                      title={`Go to ${item.name}`}
-                    >
-                      {item.name}
-                    </a>
+                    {item.url ? (
+                      <a
+                        href={item.url}
+                        target="_blank"
+                        title={`Go to ${item.name}`}
+                      >
+                        {item.name}
+                      </a>
+                    ) : (
+                      <span>{item.name}</span>
+                    )}
                   </Pill>
                 </li>
               ))
