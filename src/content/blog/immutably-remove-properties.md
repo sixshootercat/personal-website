@@ -11,7 +11,7 @@ description: An alternative approach for removing object properties without the 
 layout: "../../layouts/BlogPost.astro"
 ---
 
-## Introduction
+## <a id="introduction" href="#introduction" class="markdown-heading">Introduction</a>
 
 Most of us have at one point in time needed to remove an object property for whatever reason (i.e. a runtime condition was successfully evaluated, a server response was received, etc.). In these cases, arguably the most commonly used approach was to use the built-in JavaScript `delete` operator which will attempt to remove a given property from an object, if that property exists. This is a perfectly reasonable way of removing an object’s property, but there are some caveats around it that may cause foot shootings if not careful. The most noticeable problem to this approach is in the inherently mutable nature of the `delete` operator. It mutates the underlying object reference, therefore mutating the original object and causing potentially unwanted side effects.
 
@@ -19,7 +19,7 @@ In this article, I will first give an example of removing a property from an obj
 
 ---
 
-## ❌ The mutable approach
+## <a id="the-mutable-approach" href="#the-mutable-approach" class="markdown-heading">❌ The mutable approach</a>
 
 ```typescript
 const person = {
@@ -56,7 +56,7 @@ delete person.hasPets;
 
 ---
 
-## ✅ A safer immutable approach
+## <a id="a-safer-immutable-approach" href="#a-safer-immutable-approach" class="markdown-heading">✅ A safer immutable approach</a>
 
 Now, let’s see a better and safer alternative to removing object properties using destructuring and rest operator/syntax:
 
@@ -99,6 +99,6 @@ _**Note**: Optionally, we can also create a new copy of the original object and 
 
 ---
 
-## Final Thoughts
+## <a id="final-thoughts" href="#final-thoughts" class="markdown-heading">Final Thoughts</a>
 
 Wrapping up, whenever I need to to remove object properties in JavaScript, I reach for using destructuring and rest syntax as I consider it a cleaner and safer option when compared to doing it via the mutable delete operator.

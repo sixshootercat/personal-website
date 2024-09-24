@@ -10,6 +10,29 @@ const { content, headings } = Astro.props;
 const { title, description } = content;
 ---
 
+<!-- CSS for adding section link hash symbol -->
+<style is:inline>
+  .markdown-heading {
+    text-decoration: none !important;
+    color: inherit;
+    position: relative;
+  }
+
+  .markdown-heading::before {
+    content: "#";
+    font-size: x-large;
+    position: absolute;
+    left: -28px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    text-decoration: underline !important;
+  }
+
+  .markdown-heading:hover::before {
+    opacity: 1;
+  }
+</style>
+
 <Layout
   title={title as string}
   description={description as string}
