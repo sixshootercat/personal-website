@@ -1,6 +1,3 @@
 User-agent: *
 Disallow:
-// TODO: Add domain here
-Host:
-// TODO: Add sitemap here
-Sitemap:
+Host: https://kevin-ruhl.vercel.app/
