@@ -14,7 +14,7 @@ export default defineConfig({
   // used to generate images
   site:
     process.env.VERCEL_ENV === "production"
-      ? "https://brutal.elian.codes/"
+      ? "https://kevin-ruhl.vercel.app/"
       : process.env.VERCEL_URL
         ? `https://${process.env.VERCEL_URL}/`
         : "https://localhost:3000/",
@@ -31,7 +31,7 @@ export default defineConfig({
       exclude: ["@resvg/resvg-js"],
     },
   },
-  output: "server",
+  output: "static",
   adapter: vercel({
     webAnalytics: {
       // Enable if you want to track page views
