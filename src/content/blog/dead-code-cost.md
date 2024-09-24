@@ -2,6 +2,7 @@
 title: "The Hidden Cost: Why Dead Code Shouldn't Linger in Your Codebase"
 pubDate: 12/31/2022 12:05
 author: "Kevin Ruhl"
+slug: dead-code-cost
 tags:
   - Clean Code
   - Programming

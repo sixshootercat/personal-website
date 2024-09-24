@@ -1,9 +1,16 @@
 ---
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+
 interface Props {
   content: any;
 }
 
 const { content } = Astro.props;
+
+const post = await getCollection("blog").then((collection) =>
+  collection.find((post) => post.slug === content.slug)
+);
 ---
 
 <article
@@ -13,10 +20,21 @@ const { content } = Astro.props;
   <p class="text-slate text-sm md:text-base">
     Published on {content.pubDate} by {content.author}
   </p>
-  <div class="flex items-center gap-1">
+  <div class="flex items-center gap-1 mb-3">
     <div class:list={["i-uil-clock-eight", "w-5 h-5"]}></div>
     <span>{content.minutesRead}</span>
   </div>
+  {
+    post?.data.imgUrl && (
+      <Image
+        src={post.data.imgUrl}
+        alt={post.data.title}
+        width={800}
+        height={400}
+        class="rounded-lg border-3 border-black object-cover"
+      />
+    )
+  }
   <slot />
   <p class="text-slate">Written by {content.author}</p>
   <a href="/blog/" title="Back to blog">&larr; Back to blog</a>

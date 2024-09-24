@@ -2,6 +2,7 @@
 title: Immutably remove object properties in JavaScript
 pubDate: 12/05/2021 13:25
 author: "Kevin Ruhl"
+slug: immutably-remove-properties
 tags:
   - JavaScript
   - Programming
