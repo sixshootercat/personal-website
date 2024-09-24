@@ -4,7 +4,7 @@ import UnoCSS from "unocss/astro";
 import react from "@astrojs/react";
 import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 
-import vercel from "@astrojs/vercel/serverless";
+// import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
@@ -31,11 +31,5 @@ export default defineConfig({
       exclude: ["@resvg/resvg-js"],
     },
   },
-  output: "server",
-  adapter: vercel({
-    webAnalytics: {
-      // Enable if you want to track page views
-      enabled: true,
-    },
-  }),
+  output: "static",
 });

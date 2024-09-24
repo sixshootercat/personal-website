@@ -1,6 +1,6 @@
 // import { Resvg, type ResvgRenderOptions } from "@resvg/resvg-js";
 // import type { APIRoute } from "astro";
-// import { getCollection } from "astro:content";
+import { getCollection } from "astro:content";
 // import satori from "satori";
 // import { html as toReactElement } from "satori-html";
 
@@ -12,14 +12,14 @@
 // const height = 630;
 // const width = 1200;
 
-// const posts = await getCollection("blog");
+const posts = await getCollection("blog");
 
-// export function getStaticPaths() {
-//   return posts.map((post) => ({
-//     params: { slug: post.slug },
-//     props: { title: post.data.title, description: post.data.description },
-//   }));
-// }
+export function getStaticPaths() {
+  return posts.map((post: any) => ({
+    params: { slug: post.slug },
+    props: { title: post.data.title, description: post.data.description },
+  }));
+}
 
 // export const GET: APIRoute = async ({ params, props }) => {
 //   const title = props.title.trim() ?? "Blogpost";
