@@ -15,6 +15,24 @@ interface Props {
 const { title, description, classList, pageTitle, ogImage } = Astro.props;
 ---
 
+<!-- prevents FOUC -->
+<style is:inline>
+  body {
+    visibility: hidden;
+    opacity: 0;
+  }
+</style>
+
+<style is:global>
+  body {
+    visibility: visible;
+    opacity: 1;
+    transition:
+      visibility 0.2s linear,
+      opacity 0.2s linear;
+  }
+</style>
+
 <html lang="en" class="h-full">
   <BaseHead ogImage={ogImage} title={title} description={description} />
   <body class:list={[classList]}>
