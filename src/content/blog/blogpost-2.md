@@ -20,25 +20,25 @@ In this article, I aim to shed some light on the dangers of keeping dead code ar
 
 ---
 
-## 🤷‍♂ Why Even Care About Dead Code?
+## 🤷‍♂ Why Should I Care?
 
 Ignoring and allowing dead code to stay rent-free in the codebase has a number of downsides and rippling effects. It often increases complexity and maintenance costs, obscures the code's intent, and adds unnecessary noise when needing to debug or test the code.
 
-### 💸 Increased Complexity and Maintenance Costs
+### 💸 Increased Maintenance Costs
 
 As dead code builds up within a codebase, the complexity of the system grows with it. This accidental complexity hinders the understanding of the code, making it more difficult for developers to reason about and update the system. As a result, adding new features, fixing bugs, and general maintenance takes a heavy hit. Developers may inadvertently modify or remove code that appears unused, only to discover later that it was still being referenced by other parts of the system. This leads to increased maintenance costs, longer development cycles, and a higher chance of shipping bugs to production.
 
-### 🌑 Obscuring the Code's Intent and Logic
+### 🌑 Obscuring the Code's Intent
 
 At the core, code is a form of communication among developers, enabling them to understand the intent and logic behind a program. Dead code muddles this communication by introducing noise and confusion. When developers encounter sections of code that are seemingly inactive, they get sidetracked and distracted in analyzing it, searching for its purpose or relevance. This unnecessary cognitive load can lead to misunderstandings, misinterpretations, and reduced productivity. By eliminating dead code, developers can instead focus on the active and relevant parts of the codebase.
 
-### 📉 Negative Impact on Testing and Debugging
+### 📉 Testing and Debugging
 
 Testing and debugging are common processes that developers perform daily in codebases. Dead code gets in the way of these activites. The presence of unused code increases the surface area for potential bugs, requiring additional testing efforts. Moreover, dead code can confuse the debugging process, as developers may spend time analyzing irrelevant sections of code, diverting attention from the true cause of a bug. Removing dead code reduces the testing scope, making testing and debugging efforts more efficient and effective.
 
 ---
 
-## 🤷‍♂ So What Can We Do About It?
+## 🤷‍♂ What Can We Do About It?
 
 At first glance, the solution appears straightforward: remove any unused functions, variables, modules, imports, files, and get on with your day. However, in practice, eliminating dead code can prove more challenging than the simple "spot, delete, and commit" approach. While there are cases where removing the dead code is as simple as it sounds, there are also situations where dead code might be concealed and not immediately apparent. In this section, let's explore a handful of techniques and strategies that you can apply today and begin cleaning a more . By applying these techniques, you can ensure a more efficient, proactive, and confident removal of dead code.
 
@@ -50,7 +50,7 @@ Start by tackling the easiest and most automatable part of the process. Static a
 
 During code reviews, encourage team members to look for and call out any potentially unused or redundant code not picked up by linters and static analysis tools. There is certain code that linters and code analyzers are not able to detect - unused files, conditional code paths and any other code that gets evaluated at runtime, metaprogramming and code generation, config files, code comments, and feature flags to name a few. These are some of the sneakiest forms of dead code where it really takes cognitive effort and context to identify. Taking some extra time during the code review process to cover and ensure no dead code is introduced can be a good practice.
 
-### 3. Tree Shaking and Selective Imports🌳
+### 3. Tree Shaking 🌳
 
 For frontend JavaScript/TypeScript projects using module bundlers (like Webpack or Vite), enable tree shaking to remove unused code (dead imports and exports) automatically. Wherever possible, import only the specific parts of third-party libraries you need instead of entire modules, minimizing the risk of bundling unused code.
 
