@@ -1,6 +1,6 @@
 ---
 title: "The Hidden Cost: Why Dead Code Shouldn't Linger in Your Codebase"
-pubDate: 12/31/2022 12:05
+pubDate: 07/12/2023 10:35
 author: "Kevin Ruhl"
 slug: dead-code-cost
 tags:
