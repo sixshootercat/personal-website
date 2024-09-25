@@ -5,7 +5,7 @@ export async function GET(context) {
   const blog = await getCollection("blog");
   return rss({
     title: "Kevin Ruhl Website",
-    description: "Personal webiste for Kevin Ruhl",
+    description: "Personal website for Kevin Ruhl",
     stylesheet: false,
     site: context.site,
     items: blog.map((post) => ({
@@ -15,7 +15,6 @@ export async function GET(context) {
       link: `/blog/${post.slug}/`,
     })),
     customData: "<language>en-us</language>",
-    // TODO: Add canonicalUrl
-    canonicalUrl: "https://FILL-IN",
+    canonicalUrl: "https://kevin-ruhl.vercel.app/",
   });
 }
