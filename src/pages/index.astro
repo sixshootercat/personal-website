@@ -3,7 +3,6 @@ import Layout from "@layouts/Default.astro";
 import RecentBlogPosts from "@components/generic/RecentBlogPosts.astro";
 import { Pill } from "@eliancodes/brutal-ui";
 import { Button } from "@eliancodes/brutal-ui";
-import { Card } from "@eliancodes/brutal-ui";
 import { Image } from "astro:assets";
 import meImg from "../../public/kevin_ruhl.jpg";
 
@@ -34,21 +33,21 @@ const tools = [
   <main class="bg-gray p-6">
     <section class="grid md:grid-cols-8 gap-8 mt-4 lg:max-w[1440px] lg:mx-auto">
       <div class="col-span-6">
-        <Card color="white">
-          <div class="flex flex-col justify-between items-start gap-4">
-            <p class="mt-4 outfit text-4xl lg:text-5xl">
-              Senior Software Engineer @<a
-                class="text-black"
-                target="_blank"
-                href="https://www.solvd.com/">Solvd</a
-              >
-            </p>
-            <p class="mt-2 outfit text-xl md:text-3xl lg:text-5xl"></p>
-            <Button target="_self" href="/blog/" color="#60a5fa">
-              Check out the blog &rarr;
-            </Button>
-          </div>
-        </Card>
+        <div
+          class="flex flex-col justify-between items-start gap-4 bg-white p-4 rounded-lg border-3 border-black card-shadow"
+        >
+          <p class="mt-4 outfit text-4xl lg:text-5xl">
+            Senior Software Engineer @<a
+              class="text-black"
+              target="_blank"
+              href="https://www.solvd.com/">Solvd</a
+            >
+          </p>
+          <p class="mt-2 outfit text-xl md:text-3xl lg:text-5xl"></p>
+          <Button target="_self" href="/blog/" color="#60a5fa">
+            Check out the blog &rarr;
+          </Button>
+        </div>
       </div>
       <div class="col-span-6 sm:col-span-2">
         <Image
@@ -59,8 +58,10 @@ const tools = [
           class="object-cover h-full w-full rounded-lg md:col-span-2 border-3 border-black card-shadow"
         />
       </div>
-      <div class="col-span-6 sm:col-span-4">
-        <Card color="white">
+      <div
+        class="col-span-6 sm:col-span-4 bg-white p-4 rounded-lg border-3 border-black card-shadow"
+      >
+        <div>
           <h2 class="text-4xl lg:text-5xl mb-4 poppins">About Me</h2>
           <p class="poppins">
             I'm a software engineer working with the React.js and JavaScript
@@ -69,33 +70,33 @@ const tools = [
             explorer of ideas. I enjoy reading and writing and sometimes
             remember to publish my thoughts on the internet.
           </p>
-        </Card>
+        </div>
       </div>
-      <div class="col-span-6 sm:col-span-4">
-        <Card color="white">
-          <h2 class="text-4xl lg:text-5xl mb-8 poppins">Tools</h2>
-          <ul class="flex gap-4 flex-wrap">
-            {
-              tools.map((item) => (
-                <li>
-                  <Pill color="#60a5fa">
-                    {item.url ? (
-                      <a
-                        href={item.url}
-                        target="_blank"
-                        title={`Go to ${item.name}`}
-                      >
-                        {item.name}
-                      </a>
-                    ) : (
-                      <span>{item.name}</span>
-                    )}
-                  </Pill>
-                </li>
-              ))
-            }
-          </ul>
-        </Card>
+      <div
+        class="col-span-6 sm:col-span-4 bg-white p-4 rounded-lg border-3 border-black card-shadow"
+      >
+        <h2 class="text-4xl lg:text-5xl mb-8 poppins">Tools</h2>
+        <ul class="flex gap-4 flex-wrap">
+          {
+            tools.map((item) => (
+              <li>
+                <Pill color="#60a5fa">
+                  {item.url ? (
+                    <a
+                      href={item.url}
+                      target="_blank"
+                      title={`Go to ${item.name}`}
+                    >
+                      {item.name}
+                    </a>
+                  ) : (
+                    <span>{item.name}</span>
+                  )}
+                </Pill>
+              </li>
+            ))
+          }
+        </ul>
       </div>
     </section>
     <div class="mt-8 lg:max-w[1440px] lg:mx-auto">

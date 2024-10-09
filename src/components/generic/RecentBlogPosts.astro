@@ -1,7 +1,6 @@
 ---
 import { getCollection } from "astro:content";
 import BlogList from "../blog/BlogList.astro";
-import { Card } from "@eliancodes/brutal-ui";
 import { Button } from "@eliancodes/brutal-ui";
 
 interface Props {
@@ -15,19 +14,15 @@ const posts = await getCollection("blog").then((posts) =>
 );
 ---
 
-<section class="mt-8">
-  <Card color="white">
-    <div class="flex justify-between items-start">
-      <h2 class="text-2xl md:text-4xl lg:text-6xl mb-8 poppins">
-        Recent Blogposts
-      </h2>
-      <div class="hidden md:block">
-        <Button href="/blog/" color="#60a5fa">Go to blog &rarr;</Button>
-      </div>
-      <div class="block md:hidden">
-        <Button href="/blog/">to blog</Button>
-      </div>
+<section class="mt-8 bg-white p-4 rounded-lg border-3 border-black card-shadow">
+  <div class="flex justify-between items-start">
+    <h2 class="text-4xl lg:text-5xl mb-4 poppins">Recent Blogposts</h2>
+    <div class="hidden md:block">
+      <Button href="/blog/" color="#60a5fa">Go to blog &rarr;</Button>
     </div>
-    <BlogList posts={posts} />
-  </Card>
+    <div class="block md:hidden">
+      <Button href="/blog/">to blog</Button>
+    </div>
+  </div>
+  <BlogList posts={posts} />
 </section>
